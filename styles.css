@@ -1,50 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #fdfdfd;
-  color: #222;
-  line-height: 1.6;
-  margin: 0;
+  color: #111;
+  background-color: #fff;
+  line-height: 1.7;
 }
 
 header {
-  background: #0b0b0b;
-  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #eee;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
-  position: sticky;
-  top: 0;
+  padding: 20px 8%;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
 }
 
 nav a {
-  color: #ccc;
-  margin-left: 20px;
+  margin-left: 25px;
+  color: #555;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: #fff;
+  color: #000;
+}
+
+main {
+  padding-top: 100px;
 }
 
 section {
-  padding: 60px 10%;
+  padding: 100px 12%;
   max-width: 1000px;
   margin: auto;
 }
 
-h2 {
-  color: #111;
+h1 {
+  font-size: 3rem;
   margin-bottom: 10px;
 }
 
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
+
+p {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+#hero {
+  text-align: center;
+  padding: 150px 10%;
+  background-color: #f8f8f8;
+}
+
+#hero h2 {
+  font-weight: 400;
+  color: #444;
+}
+
+#hero .links a {
+  margin: 0 10px;
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
+}
+
+#hero .links a:hover {
+  border-bottom: 1px solid #000;
+}
+
 .project-card {
-  background: #fafafa;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .project-card img {
@@ -52,9 +102,42 @@ h2 {
   border-radius: 10px;
 }
 
+.arrow-link {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+.exp-item {
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+ul {
+  list-style: none;
+}
+
 footer {
-  background: #0b0b0b;
-  color: white;
   text-align: center;
-  padding: 30px 10px;
+  padding: 40px;
+  background-color: #fafafa;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 8%;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  header {
+    flex-direction: column;
+  }
+  nav {
+    margin-top: 10px;
+  }
 }
