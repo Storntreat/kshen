@@ -143,11 +143,9 @@ footer {
 }
 
 .profile-pic {
-  width: 130px;
+  width: 1vw;
   aspect-ratio: 1 / 1; /* ensures perfect square shape */
   border-radius: 50%;
-  object-fit: cover; /* fills the circle nicely */
-  object-position: center 30%; /* shift focus upward slightly if needed */
   border: 3px solid #fff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
