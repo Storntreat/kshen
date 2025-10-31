@@ -143,19 +143,18 @@ footer {
 }
 
 .profile-pic {
-  width: 18vw;
-  max-width: 120px;
-  height: auto;
-  border-radius: 50%; /* curved corners instead of a full circle */
-  object-fit: cover;
-  object-position: center;
-  border: 2px solid #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 130px; /* perfect size for a centered hero image */
+  height: 130px; /* force equal width & height */
+  border-radius: 50%; /* makes it circular */
+  object-fit: cover; /* zoom/crop instead of stretch */
+  object-position: center; /* center your face */
+  border: 3px solid #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-pic:hover {
-  transform: scale(1.04);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
