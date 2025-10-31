@@ -143,8 +143,8 @@ footer {
 }
 
 .profile-pic {
-  width: 130px; /* perfect size for a centered hero image */
-  height: 130px; /* force equal width & height */
+  width: 50px; /* perfect size for a centered hero image */
+  height: 50px; /* force equal width & height */
   border-radius: 50%; /* makes it circular */
   object-fit: cover; /* zoom/crop instead of stretch */
   object-position: center; /* center your face */
