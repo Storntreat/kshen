@@ -1,63 +1,34 @@
-/* ---------- RESET ---------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ---------- GLOBAL GRADIENT FADE-IN ---------- */
 body {
-  margin: 0;
   font-family: "Poppins", sans-serif;
-  color: #fff;
-  background: linear-gradient(135deg, #ffe6f0, #ffd1dc, #ffe6f0);
-  background-size: 200% 200%;
-  animation: gradientFadeIn 2.5s ease forwards, gradientFlow 20s ease infinite;
+  color: #111;
+  background-color: #fff;
+  line-height: 1.7;
 }
 
-/* Subtle fade from white → soft pink gradient */
-@keyframes gradientFadeIn {
-  0% {
-    background: white;
-  }
-  100% {
-    background: linear-gradient(135deg, #ffe6f0, #ffd1dc, #ffe6f0);
-  }
-}
-
-/* Gentle slow movement in gradient */
-@keyframes gradientFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* ---------- HEADER ---------- */
 header {
   position: fixed;
   top: 0;
   width: 100%;
   background: #fff;
-  color: #333;
   border-bottom: 1px solid #eee;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 8%;
   z-index: 1000;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+  transition: all 0.4s ease;
 }
 
 header.scrolled {
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(8px);
 }
 
 header.hide {
@@ -76,13 +47,13 @@ nav a {
   color: #555;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
 }
+
 nav a:hover {
   color: #000;
 }
 
-/* ---------- LAYOUT ---------- */
 main {
   padding-top: 100px;
 }
@@ -97,57 +68,47 @@ h1 {
   font-size: 3rem;
   margin-bottom: 10px;
 }
+
 h2 {
   font-size: 1.8rem;
   margin-bottom: 25px;
 }
+
 p {
   margin-bottom: 15px;
   color: #333;
 }
 
-/* ---------- HERO (targeting your id="hero") ---------- */
-.hero {
-  height: 100vh;
+#hero {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  color: #222;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: heroAppear 1.8s ease-out forwards;
-  animation-delay: 1.2s; /* starts after gradient */
+  background-color: #f8f8f8;
+  padding: 150px 10%;
+  text-align: left;
 }
 
-/* No double fade */
-.hero h1,
-.hero p,
-.hero .links {
-  opacity: 1;
-  transform: none;
-  animation: none;
-}
-
-@keyframes heroAppear {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* layout inside hero */
-#hero .hero-content {
+.hero-content {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 60px;
   max-width: 1000px;
-  width: 100%;
 }
 
-#hero .hero-text {
-  max-width: 560px;
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-text h2 {
+  font-weight: 400;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .profile-pic {
@@ -156,45 +117,52 @@ p {
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid #fff;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1),
-    box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .profile-pic:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Make sure hero text elements do not have extra animation */
-#hero h1,
-#hero h2,
-#hero p,
-#hero .links {
-  animation: none;
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .profile-pic {
+    width: 160px;
+    height: 160px;
+  }
 }
 
-/* hero links style */
 #hero .links a {
   margin: 0 10px;
-  color: #111;
+  color: #000;
   text-decoration: none;
   font-weight: 500;
   border-bottom: 1px solid transparent;
-}
-#hero .links a:hover {
-  border-bottom: 1px solid #111;
+  transition: 0.3s;
 }
 
-/* ---------- PROJECTS & OTHER ---------- */
+#hero .links a:hover {
+  border-bottom: 1px solid #000;
+}
+
 .project-card {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
 .project-card img {
   width: 100%;
   border-radius: 10px;
 }
+
 .arrow-link {
   text-decoration: none;
   color: #000;
@@ -211,7 +179,6 @@ ul {
   list-style: none;
 }
 
-/* ---------- FOOTER ---------- */
 footer {
   text-align: center;
   padding: 40px;
@@ -219,33 +186,4 @@ footer {
   border-top: 1px solid #eee;
   font-size: 0.9rem;
   color: #777;
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 880px) {
-  #hero .hero-content {
-    gap: 28px;
-    padding: 0 20px;
-  }
-  .profile-pic {
-    width: 160px;
-    height: 160px;
-  }
-  h1 {
-    font-size: 2.2rem;
-  }
-}
-
-@media (max-width: 600px) {
-  #hero {
-    padding: 40px 0;
-  }
-  #hero .hero-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
-  #hero .hero-text {
-    max-width: 100%;
-  }
 }
