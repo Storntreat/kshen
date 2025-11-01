@@ -79,38 +79,60 @@ p {
   color: #333;
 }
 
+/* --- Hero Section Enhancements --- */
+
 #hero {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f8f8;
   padding: 150px 10%;
   text-align: left;
+  position: relative;
+  overflow: hidden;
+  color: #111;
+  background: linear-gradient(120deg, #f8f8f8, #eaeaea);
+  animation: gradientShift 10s ease infinite alternate;
 }
 
+/* Animated background gradient */
+@keyframes gradientShift {
+  0% {
+    background: linear-gradient(120deg, #f8f8f8, #eaeaea);
+  }
+  100% {
+    background: linear-gradient(120deg, #f0e7ff, #f8f8f8);
+  }
+}
+
+/* Smooth entrance animations */
 .hero-content {
   display: flex;
   align-items: center;
   gap: 60px;
   max-width: 1000px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.2s ease forwards;
 }
 
-.hero-text h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.hero-text h2 {
-  font-weight: 400;
-  color: #444;
-  margin-bottom: 10px;
+/* Stagger the text slightly after the image */
+.hero-text {
+  animation: fadeInUp 1.5s ease forwards;
+  animation-delay: 0.3s;
 }
 
-.hero-text p {
-  margin-bottom: 20px;
-  color: #333;
-}
-
+/* Floating hover effect for the profile pic */
 .profile-pic {
   width: 200px;
   height: 200px;
@@ -118,11 +140,11 @@ p {
   border-radius: 50%;
   border: 3px solid #fff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
 }
 
 .profile-pic:hover {
-  transform: scale(1.05);
+  transform: translateY(-8px) scale(1.05);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
