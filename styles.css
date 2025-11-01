@@ -5,10 +5,34 @@
 }
 
 body {
+  margin: 0;
   font-family: "Poppins", sans-serif;
-  color: #111;
-  background-color: #fff;
-  line-height: 1.7;
+  color: #fff;
+  background: linear-gradient(135deg, #ff7eb3, #ff758c, #ff7eb3);
+  background-size: 300% 300%;
+  animation: gradientReveal 2s ease-in forwards, gradientMove 10s ease infinite;
+}
+
+@keyframes gradientReveal {
+  0% {
+    background: white;
+  }
+  100% {
+    background: linear-gradient(135deg, #ff7eb3, #ff758c, #ff7eb3);
+    background-size: 300% 300%;
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 header {
@@ -81,17 +105,17 @@ p {
 
 /* --- Hero Section Enhancements --- */
 
-#hero {
+.hero {
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 150px 10%;
-  text-align: left;
-  position: relative;
-  overflow: hidden;
-  color: #111;
-  background: linear-gradient(120deg, #f8f8f8, #eaeaea);
-  animation: gradientShift 10s ease infinite alternate;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeUp 1.8s ease-out forwards;
+  animation-delay: 1s; /* waits for the gradient fade first */
 }
 
 /* Animated background gradient */
@@ -104,6 +128,14 @@ p {
   }
 }
 
+.hero h1,
+.hero p,
+.hero .links {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
 /* Smooth entrance animations */
 .hero-content {
   display: flex;
@@ -113,6 +145,13 @@ p {
   opacity: 0;
   transform: translateY(40px);
   animation: fadeInUp 1.2s ease forwards;
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInUp {
