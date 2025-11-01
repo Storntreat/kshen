@@ -5,27 +5,37 @@
   box-sizing: border-box;
 }
 
-/* ---------- PAGE BACKGROUND + TYPOGRAPHY ---------- */
+/* ---------- GLOBAL GRADIENT FADE-IN ---------- */
 body {
+  margin: 0;
   font-family: "Poppins", sans-serif;
-  color: #111;
-  background: white;            /* start white so gradient can fade in */
-  overflow-x: hidden;
-  transition: background 400ms ease;
+  color: #fff;
+  background: linear-gradient(135deg, #ffe6f0, #ffd1dc, #ffe6f0);
+  background-size: 200% 200%;
+  animation: gradientFadeIn 2.5s ease forwards, gradientFlow 20s ease infinite;
 }
 
-/* After load, .loaded will enable moving gradient */
-body.loaded {
-  background: linear-gradient(135deg, #ff7eb3, #ff758c, #ffb199);
-  background-size: 300% 300%;
-  animation: gradientMove 10s ease infinite;
+/* Subtle fade from white → soft pink gradient */
+@keyframes gradientFadeIn {
+  0% {
+    background: white;
+  }
+  100% {
+    background: linear-gradient(135deg, #ffe6f0, #ffd1dc, #ffe6f0);
+  }
 }
 
-/* subtle motion */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Gentle slow movement in gradient */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ---------- HEADER ---------- */
@@ -45,8 +55,8 @@ header {
 }
 
 header.scrolled {
-  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-  background-color: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(6px);
 }
 
@@ -55,7 +65,11 @@ header.hide {
   opacity: 0;
 }
 
-.logo { font-weight: 700; font-size: 1.2rem; letter-spacing: 0.5px; }
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+}
 
 nav a {
   margin-left: 25px;
@@ -64,38 +78,63 @@ nav a {
   font-weight: 500;
   transition: color 0.2s ease;
 }
-nav a:hover { color: #000; }
-
-/* ---------- LAYOUT ---------- */
-main { padding-top: 100px; }
-
-section { padding: 100px 12%; max-width: 1000px; margin: auto; }
-
-h1 { font-size: 3rem; margin-bottom: 10px; }
-h2 { font-size: 1.8rem; margin-bottom: 25px; }
-p { margin-bottom: 15px; color: #333; }
-
-/* ---------- HERO (targeting your id="hero") ---------- */
-#hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  position: relative;
-  overflow: hidden;
-  color: #111;
-  background: transparent; /* background handled by body */
-  /* initial state for entrance */
-  opacity: 0;
-  transform: translateY(18px);
-  animation: heroReveal 1.2s ease-out forwards;
-  animation-delay: 0.95s; /* waits for gradient fade */
+nav a:hover {
+  color: #000;
 }
 
-/* bring hero into view */
-@keyframes heroReveal {
-  to { opacity: 1; transform: translateY(0); }
+/* ---------- LAYOUT ---------- */
+main {
+  padding-top: 100px;
+}
+
+section {
+  padding: 100px 12%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
+p {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* ---------- HERO (targeting your id="hero") ---------- */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #222;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroAppear 1.8s ease-out forwards;
+  animation-delay: 1.2s; /* starts after gradient */
+}
+
+/* No double fade */
+.hero h1,
+.hero p,
+.hero .links {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+@keyframes heroAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* layout inside hero */
@@ -107,7 +146,9 @@ p { margin-bottom: 15px; color: #333; }
   width: 100%;
 }
 
-#hero .hero-text { max-width: 560px; }
+#hero .hero-text {
+  max-width: 560px;
+}
 
 .profile-pic {
   width: 200px;
@@ -115,16 +156,22 @@ p { margin-bottom: 15px; color: #333; }
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid #fff;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-  transition: transform 0.45s cubic-bezier(.2,.9,.2,1), box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1),
+    box-shadow 0.3s ease;
 }
 .profile-pic:hover {
   transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Make sure hero text elements do not have extra animation */
-#hero h1, #hero h2, #hero p, #hero .links { animation: none; }
+#hero h1,
+#hero h2,
+#hero p,
+#hero .links {
+  animation: none;
+}
 
 /* hero links style */
 #hero .links a {
@@ -134,12 +181,25 @@ p { margin-bottom: 15px; color: #333; }
   font-weight: 500;
   border-bottom: 1px solid transparent;
 }
-#hero .links a:hover { border-bottom: 1px solid #111; }
+#hero .links a:hover {
+  border-bottom: 1px solid #111;
+}
 
 /* ---------- PROJECTS & OTHER ---------- */
-.project-card { display: flex; flex-direction: column; gap: 20px; }
-.project-card img { width: 100%; border-radius: 10px; }
-.arrow-link { text-decoration: none; color: #000; font-weight: 500; }
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.project-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+.arrow-link {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
 
 .exp-item {
   margin-bottom: 25px;
@@ -147,7 +207,9 @@ p { margin-bottom: 15px; color: #333; }
   border-bottom: 1px solid #eee;
 }
 
-ul { list-style: none; }
+ul {
+  list-style: none;
+}
 
 /* ---------- FOOTER ---------- */
 footer {
@@ -161,13 +223,29 @@ footer {
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 880px) {
-  #hero .hero-content { gap: 28px; padding: 0 20px; }
-  .profile-pic { width: 160px; height: 160px; }
-  h1 { font-size: 2.2rem; }
+  #hero .hero-content {
+    gap: 28px;
+    padding: 0 20px;
+  }
+  .profile-pic {
+    width: 160px;
+    height: 160px;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
 }
 
 @media (max-width: 600px) {
-  #hero { padding: 40px 0; }
-  #hero .hero-content { flex-direction: column; text-align: center; gap: 20px; }
-  #hero .hero-text { max-width: 100%; }
+  #hero {
+    padding: 40px 0;
+  }
+  #hero .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  #hero .hero-text {
+    max-width: 100%;
+  }
 }
