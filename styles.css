@@ -1,18 +1,20 @@
+/* ---------- GLOBAL RESET ---------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ---------- PAGE BACKGROUND + TYPOGRAPHY ---------- */
 body {
-  margin: 0;
   font-family: "Poppins", sans-serif;
   color: #fff;
-  background: linear-gradient(135deg, #ff7eb3, #ff758c, #ff7eb3);
-  background-size: 300% 300%;
-  animation: gradientReveal 2s ease-in forwards, gradientMove 10s ease infinite;
+  background: white;
+  overflow-x: hidden;
+  animation: gradientReveal 2s ease-in forwards;
 }
 
+/* Smooth gradient fade-in for the whole page */
 @keyframes gradientReveal {
   0% {
     background: white;
@@ -23,6 +25,7 @@ body {
   }
 }
 
+/* Subtle continuous gradient motion */
 @keyframes gradientMove {
   0% {
     background-position: 0% 50%;
@@ -35,11 +38,19 @@ body {
   }
 }
 
+body.loaded {
+  background: linear-gradient(135deg, #ff7eb3, #ff758c, #ff7eb3);
+  background-size: 300% 300%;
+  animation: gradientMove 10s ease infinite;
+}
+
+/* ---------- HEADER ---------- */
 header {
   position: fixed;
   top: 0;
   width: 100%;
   background: #fff;
+  color: #333;
   border-bottom: 1px solid #eee;
   display: flex;
   justify-content: space-between;
@@ -51,8 +62,8 @@ header {
 
 header.scrolled {
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-  background-color: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
 }
 
 header.hide {
@@ -78,6 +89,7 @@ nav a:hover {
   color: #000;
 }
 
+/* ---------- MAIN LAYOUT ---------- */
 main {
   padding-top: 100px;
 }
@@ -103,8 +115,7 @@ p {
   color: #333;
 }
 
-/* --- Hero Section Enhancements --- */
-
+/* ---------- HERO SECTION ---------- */
 .hero {
   height: 100vh;
   display: flex;
@@ -114,37 +125,8 @@ p {
   text-align: center;
   opacity: 0;
   transform: translateY(30px);
-  animation: heroFadeUp 1.8s ease-out forwards;
-  animation-delay: 1s; /* waits for the gradient fade first */
-}
-
-/* Animated background gradient */
-@keyframes gradientShift {
-  0% {
-    background: linear-gradient(120deg, #f8f8f8, #eaeaea);
-  }
-  100% {
-    background: linear-gradient(120deg, #f0e7ff, #f8f8f8);
-  }
-}
-
-.hero h1,
-.hero p,
-.hero .links {
-  opacity: 1;
-  transform: none;
-  animation: none;
-}
-
-/* Smooth entrance animations */
-.hero-content {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-  max-width: 1000px;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeInUp 1.2s ease forwards;
+  animation: heroFadeUp 1.5s ease-out forwards;
+  animation-delay: 1s; /* Wait for background reveal */
 }
 
 @keyframes heroFadeUp {
@@ -154,24 +136,17 @@ p {
   }
 }
 
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1000px;
 }
 
-/* Stagger the text slightly after the image */
 .hero-text {
-  animation: fadeInUp 1.5s ease forwards;
-  animation-delay: 0.3s;
+  max-width: 500px;
 }
 
-/* Floating hover effect for the profile pic */
 .profile-pic {
   width: 200px;
   height: 200px;
@@ -187,19 +162,6 @@ p {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 768px) {
-  .hero-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 30px;
-  }
-
-  .profile-pic {
-    width: 160px;
-    height: 160px;
-  }
-}
-
 #hero .links a {
   margin: 0 10px;
   color: #000;
@@ -213,6 +175,20 @@ p {
   border-bottom: 1px solid #000;
 }
 
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .profile-pic {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* ---------- PROJECTS & EXPERIENCE ---------- */
 .project-card {
   display: flex;
   flex-direction: column;
@@ -240,6 +216,7 @@ ul {
   list-style: none;
 }
 
+/* ---------- FOOTER ---------- */
 footer {
   text-align: center;
   padding: 40px;
