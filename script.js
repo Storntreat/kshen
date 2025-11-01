@@ -1,33 +1,32 @@
-// Wait for full load before gradient animation starts looping
+// 1) Start background gradient after full load (so the white -> gradient reveal looks smooth)
 window.addEventListener("load", () => {
-  document.body.classList.add("loaded");
+  // add small delay so reveal feels polished
+  setTimeout(() => document.body.classList.add("loaded"), 120);
 });
 
-// Smooth scroll for nav links
+// 2) Smooth scroll for internal links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", (e) => {
     e.preventDefault();
-    document.querySelector(anchor.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
-    });
+    const target = document.querySelector(anchor.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   });
 });
 
-// Header hide/show on scroll
+// 3) Header hide/show & scrolled shadow
 let lastScrollY = window.scrollY;
 const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
   const currentScrollY = window.scrollY;
 
-  // Add shadow when scrolled
-  if (currentScrollY > 100) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
+  // shadow when past top
+  if (currentScrollY > 100) header.classList.add("scrolled");
+  else header.classList.remove("scrolled");
 
-  // Hide header when scrolling down, show when up
+  // hide on scroll down, show on scroll up
   if (currentScrollY > lastScrollY && currentScrollY > 200) {
     header.classList.add("hide");
   } else {
