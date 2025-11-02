@@ -69,8 +69,16 @@ nav a:hover {
 /* =======================
    Section Base
    ======================= */
+
 main {
-  padding-top: 100px;
+  max-width: 1000px; /* Keeps everything neatly centered */
+  margin: 0 auto; /* Centers the main content horizontally */
+  padding: 100px 5%; /* Adds balanced spacing around */
+}
+
+section {
+  max-width: 1000px; /* Prevents super wide sections */
+  margin: 0 auto; /* Centers each section */
 }
 
 /* New fade-in animation for individual words or text blocks */
