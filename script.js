@@ -36,18 +36,27 @@ window.addEventListener("scroll", () => {
 });
 
 /* ===========================
-   Section Reveal on Scroll
+   Word / Text Fade-In on Scroll
    =========================== */
-const sections = document.querySelectorAll("section");
 
-const observer = new IntersectionObserver(
+// Select all paragraphs, headings, and list items
+const fadeElements = document.querySelectorAll("p, h1, h2, h3, li");
+
+// Add fade-in class to all these elements initially
+fadeElements.forEach((el) => el.classList.add("fade-in"));
+
+const wordObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        // Optional: stop observing once it's visible for performance
+        wordObserver.unobserve(entry.target);
+      }
     });
   },
-  { threshold: 0.2 } // Trigger when 20% of section is visible
+  { threshold: 0.2 } // Trigger when 20% of text is visible
 );
 
-// Observe all sections
-sections.forEach((section) => observer.observe(section));
+// Observe each text element
+fadeElements.forEach((el) => wordObserver.observe(el));

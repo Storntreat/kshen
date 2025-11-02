@@ -73,17 +73,14 @@ main {
   padding-top: 100px;
 }
 
-section {
-  padding: 100px 12%;
-  max-width: 1000px;
-  margin: auto;
+/* New fade-in animation for individual words or text blocks */
+.fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.4s ease, transform 1.4s ease;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
-/* Section fade-in animation */
-section.visible {
+.fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
