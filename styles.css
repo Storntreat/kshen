@@ -73,11 +73,11 @@ nav a:hover {
 main {
   max-width: 1000px; /* Keeps everything neatly centered */
   margin: 0 auto; /* Centers the main content horizontally */
-  padding: 100px 5%; /* Adds balanced spacing around */
+  padding: 50px 5%; /* Adds balanced spacing around */
 }
 
 section {
-  padding: 100px 12%;
+  padding: 50px 12%;
   max-width: 1000px;
   margin: auto;
 }
@@ -191,62 +191,75 @@ section {
 }
 
 /* =======================
-   Projects Section
+   Projects Section (Larger for Images)
    ======================= */
-.project-card {
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
+#projects {
+  max-width: 1200px; /* wider content area */
+  margin: 0 auto;
+  padding: 100px 6%; /* more breathing space */
 }
 
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px; /* more space between project cards */
+  align-items: start;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card img {
   width: 100%;
-  height: 260px;
+  height: 320px; /* bigger image space */
   object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.project-card:hover img {
-  transform: scale(1.05);
 }
 
 .project-info {
-  padding: 24px;
-  border-top: 1px solid #f0f0f0;
-}
-
-.arrow-link {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.arrow-link:hover {
-  color: #004db3;
+  padding: 28px;
+  font-size: 1rem;
 }
 
 /* =======================
-   Experience & Awards
+   Experience Section (More Spacious for Pictures)
    ======================= */
-.exp-item {
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #eee;
+#experience {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 6%;
 }
 
-ul {
-  list-style: none;
+.experience-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px; /* space between each experience item */
+  align-items: center;
+}
+
+.exp-item {
+  flex: 1 1 45%; /* two per row on desktop */
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.exp-item:hover {
+  transform: translateY(-6px);
+}
+
+.exp-item img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
 }
 
 /* =======================
