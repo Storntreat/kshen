@@ -93,7 +93,7 @@ p {
   padding: 150px 10%;
   border-radius: 20px;
   text-align: left;
-  background: linear-gradient(135deg, #f5f7fa, #e4ecf5);
+  background: linear-gradient(135deg, #f8fafc, #e4ecf5);
 }
 
 .hero-content {
@@ -145,16 +145,63 @@ p {
     width: 160px;
     height: 160px;
   }
+  #hero .links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .link-btn {
+    width: 80%;
+    justify-content: center;
+  }
 }
 
-#hero .links a {
-  margin: 0 10px;
-  color: #000;
+#hero .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5f5f5;
+  color: #111;
   text-decoration: none;
   font-weight: 500;
-  border-bottom: 1px solid transparent;
-  transition: 0.3s;
+  border-radius: 10px;
+  padding: 10px 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eaeaea;
 }
+
+.link-btn i {
+  font-size: 1.1rem;
+}
+
+.link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* platform-specific colors */
+.link-btn.linkedin:hover {
+  background: #0077b5;
+  color: #fff;
+}
+
+.link-btn.github:hover {
+  background: #333;
+  color: #fff;
+}
+
+.link-btn.resume:hover {
+  background: #0077ff;
+  color: #fff;
+}
+
 nav a:hover,
 #hero .links a:hover {
   color: var(--accent);
