@@ -77,8 +77,9 @@ main {
 }
 
 section {
-  max-width: 1000px; /* Prevents super wide sections */
-  margin: 0 auto; /* Centers each section */
+  padding: 100px 12%;
+  max-width: 1000px;
+  margin: auto;
 }
 
 /* New fade-in animation for individual words or text blocks */
